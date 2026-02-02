@@ -1,5 +1,5 @@
 # AssScaner
-Heuristic antivirus for People Playground!
+**Ass**embly **Scan**n**er**, heuristic antivirus for People Playground!
 ## Installation
 1. Install [BepInEx 5](https://github.com/BepInEx/BepInEx)
 2. Download dll from [Releases](https://github.com/maksim10411072/AssScaner/releases) 
