@@ -27,7 +27,7 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
   
-  <ItemGroup>
+  <ItemGroup> <!-- replace with your own pathes if you compile this yourself -->
     <Reference Include="Assembly-CSharp" IncludeAssets="compile">
       <HintPath>D:\games\People Playground v1.27.5\People Playground_Data\Managed\Assembly-CSharp.dll</HintPath>
 	  <Private>false</Private>
