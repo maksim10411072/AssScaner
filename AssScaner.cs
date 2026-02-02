@@ -33,17 +33,19 @@ namespace AssScaner
             Logger.LogInfo("Patched shit");
         }
 #pragma warning restore RCS1213 // Remove unused member declaration
-
+        // todo: hook onto Assembly.Load too
         public static void PmcrPostfix((ModCompilationResult result, ModScript script) tuple, ModMetaData mod)
         {
             string location = mod.MetaLocation;
             Logger.LogInfo($"Checking mod {mod.Name} in {location}.");
-            foreach (var file in Directory.GetFiles(location, "*.dll", SearchOption.AllDirectories))
+            foreach (var file in Directory.GetFiles(location, "*", SearchOption.AllDirectories))
             {
-                Logger.LogInfo($"Found assembly {file}...");
-                var ass = Assembly.LoadFile(file);
+                var binary = File.ReadAllBytes(file);
+                Assembly ass = null;
+                try { ass = Assembly.Load(binary); } catch { }
                 if (ass != null)
                 {
+                    Logger.LogInfo($"Checking file {file}...");
                     foreach (var referenced in ass.GetReferencedAssemblies())
                     {
                         Logger.LogInfo($"... That uses {referenced}");
@@ -55,6 +57,7 @@ namespace AssScaner
                             mod.HasErrors = true;
                             //mod.Suspicious = true;
                             // раскомментировать нижнее когда я изобрету доверие
+                            // я щас сижу и думаю, какой же весь этот патч всё таки херота которую обойти изично
                             //mod.GetType().GetProperty("Suspicious", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public).SetValue(mod, true);
                             mod.Errors = "Disabled by AssScaner since it is possibly dangerous!";
                             return;
