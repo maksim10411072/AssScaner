@@ -5,7 +5,7 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>ru.maksimka.chan.AssScaner</AssemblyName>
     <Product>AssScaner</Product>
-    <Version>1</Version>
+    <Version>0.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
